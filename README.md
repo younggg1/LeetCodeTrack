@@ -20,6 +20,6 @@
 ## 使用说明
 1. 克隆仓库： 
    ```bash
-   git clone https://github.com/younggg1/LeetCodeTrack-.git
+   git clone https://github.com/younggg1/LeetCodeTrack.git
 2. 在线访问：
    暂未上线
