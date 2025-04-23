@@ -20,12 +20,12 @@ LeetCodeTrack 是一个基于 Vue 3 的刷题记录与复习平台，涵盖了 L
 
 ## 项目结构  
 src/
-  data/              # 题库数据，按分类存储
-  views/             # 各分类页面与详情页
-  stores/            # 题库状态管理
-  router/            # 路由配置
-  App.vue            # 根组件
-  main.js            # 入口文件
+  data/              # 题库数据，按分类存储  
+  views/             # 各分类页面与详情页  
+  stores/            # 题库状态管理  
+  router/            # 路由配置  
+  App.vue            # 根组件  
+  main.js            # 入口文件  
 README.md  
 
 ## 使用说明
