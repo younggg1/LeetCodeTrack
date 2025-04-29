@@ -62,5 +62,78 @@ word1 和 word2 由小写英文字母组成`,
         ],
         originalUrl: 'https://leetcode.cn/problems/merge-strings-alternately/',
         tags: ["字符串", "双指针"]
+    },
+    {
+        id: 389,
+        title: "找不同",
+        description: `给定两个字符串 s 和 t ，它们只包含小写字母。
+字符串 t 由字符串 s 随机重排，然后在随机位置添加一个字母。
+请找出在 t 中被添加的字母。
+示例 1：
+输入：s = "abcd", t = "abcde"
+输出："e"
+解释：'e' 是那个被添加的字母。
+示例 2：
+输入：s = "", t = "y"
+输出："y"
+提示：
+0 <= s.length <= 1000
+t.length == s.length + 1
+s 和 t 只包含小写字母`,
+        difficulty: '简单',
+        idea: [
+            `
+      计数法：
+      1.用一个数组 count[26] 记录每个字母出现的次数。
+      2.先扫描字符串 s，把每个字母出现的次数加1。
+      3.再扫描字符串 t，把每个字母出现的次数减1。
+      4.如果某个字母减到负数了，就说明这个字母是多出来的
+       `,
+            `
+            ASCII求和法：
+            1.把 t 的所有字符的 ASCII 编码值加起来。
+            2.把 s 的所有字符的 ASCII 编码值加起来。
+            3.(t的总和) - (s的总和) = 多出来的那个字母的ASCII码。
+            4.返回这个 ASCII 码对应的字符。
+            `
+
+
+        ],
+        code: [
+            `class Solution {
+    public char findTheDifference(String s, String t) {
+        int[] count = new int[26];//26个字母
+        //统计s中每个字母的数量
+        for (char c : s.toCharArray()) {
+            count[c - 'a']++;//本质上是ASCII码相减
+        }
+        // 在t中找多出来的字母
+        for (char c : t.toCharArray()) {
+            count[c - 'a']--;
+            if (count[c - 'a'] < 0) {
+                return c;
+            }
+        }
+        return 0;
+    }
+}`,
+`
+public class Solution {
+    public char findTheDifference(String s, String t) {
+        int sumS = 0, sumT = 0;
+        for (char c : s.toCharArray()) {
+            sumS += c;
+        }
+        for (char c : t.toCharArray()) {
+            sumT += c;
+        }
+        return (char)(sumT - sumS);
+    }
+}
+
+`
+        ],
+        originalUrl: 'https://leetcode.cn/problems/find-the-difference/',
+        tags: ["位运算", "哈希表", "字符串","排序"]
     }
 ]
