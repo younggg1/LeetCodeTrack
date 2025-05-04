@@ -135,5 +135,81 @@ public class Solution {
         ],
         originalUrl: 'https://leetcode.cn/problems/find-the-difference/',
         tags: ["位运算", "哈希表", "字符串","排序"]
+    },
+    {
+        id: 242,
+        title: "有效的字母异位词",
+        description: `给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的 字母异位词。
+字母异位词：指由相同的字母重新排列而成的字符串。
+示例 1:
+输入: s = "anagram", t = "nagaram"
+输出: true
+示例 2:
+输入: s = "rat", t = "car"
+输出: false
+提示:
+1 <= s.length, t.length <= 5 * 104
+s 和 t 仅包含小写字母`,
+        difficulty: '简单',
+        idea: [
+            `
+      方法一：排序：
+      1.将字符串 s 和 t 分别排序。
+      2.比较排序后的字符串是否相等。
+      3.如果相等，说明 t 是 s 的字母异位词，返回 true；否则返回 false。
+      4.此外，如果 s 和 t 的长度不同，那必然 t 不是 s 的字母异位词，返回 false。
+       `,
+            `
+        方法二：哈希表：
+            1.统计 t 中每个字母出现的次数。
+            2.统计 s 中每个字母出现的次数。
+            3.比较两个哈希表是否相等。
+            4.如果相等，说明 t 是 s 的字母异位词，返回 true；否则返回 false。
+            `
+
+
+        ],
+        code: [
+            `class Solution {
+    public boolean isAnagram(String s, String t) {
+    //判断长度是否相等，如果不相等那必然不是字母异位词
+        if (s.length() != t.length()) {
+            return false;
+        }
+        char[] str1 = s.toCharArray();
+        char[] str2 = t.toCharArray();
+        //排序
+        Arrays.sort(str1);
+        Arrays.sort(str2);
+        return Arrays.equals(str1, str2);
+    }
+}`,
+`
+class Solution {
+    public boolean isAnagram(String s, String t) {
+    //判断长度是否相等，如果不相等那必然不是字母异位词
+        if (s.length() != t.length()) {
+            return false;
+        }
+        int[] table = new int[26];
+        //统计s中每个字母出现的次数
+        for (int i = 0; i < s.length(); i++) {
+            table[s.charAt(i) - 'a']++;
+        }
+        //统计t中每个字母出现的次数
+        for (int i = 0; i < t.length(); i++) {
+            table[t.charAt(i) - 'a']--;
+            //如果某个字母的次数小于0，说明t中多了一个字母
+            if (table[t.charAt(i) - 'a'] < 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+`
+        ],
+        originalUrl: 'https://leetcode.cn/problems/valid-anagram/',
+        tags: [ "哈希表", "字符串","排序"]
     }
 ]
