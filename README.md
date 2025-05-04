@@ -47,8 +47,8 @@ README.md
    ```bash
    npm run build
    ```  
-5. **在线访问**
-   在线访问：https://younggg1.github.io/LeetCodeTrack/  
+5. **在线访问**  
+   在线访问：https://leetcodetrack.pages.dev/
 6. **扩展与自定义**
    - 题库数据可在 `src/data/` 下按需扩展，格式见现有文件。 
 ## 进度
